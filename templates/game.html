@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tic Tac Toe</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        
+        td {
+            border: 1px solid black;
+            width: 75px;
+            height: 75px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        td>a {
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        {% for i in range(10) %}
+        <tr>
+            {% for j in range(10) %}
+            <td>
+                {% if game[i][j] %} {{ game[i][j] }} {% else %}
+                <a href="{{ url_for('play', row=i, col=j) }}">Play {{ turn }}</a> {% endif %}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    <form action="/clear">
+        <input type="submit" value="Clear Board" />
+    </form>
+</body>
+
+</html>
